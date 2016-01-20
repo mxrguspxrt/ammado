@@ -22,11 +22,13 @@ Configuration
 First define API link:
 
 ```ruby
+require 'ammado'
+
 Ammado::Api.default_api_link = Ammado::Api.new(
   key: "AMMADO_API_KEY_HERE",
   secret: "AMMADO_API_KEY_HERE",
   host: 'https://api.ammado.com/',
-  default_images_folder: '/adidas/api-internal/public/' # Endpoints where you are uploading a file, take their files from this folder.
+  default_images_folder: '/folder/for/files/'
 )
 ```
 
@@ -63,7 +65,8 @@ ammado_fundraiser = Ammado::Fundraiser.create(
 if ammado_fundraiser.created?
   puts "Created a fundraiser, with permalink: #{ ammado_fundraiser.permalink }"
 else
-  puts "Failed to create fundraiser and got errors #{ ammando_fundraiser.errors.map(&:message).join(', ') }"
+  puts "Failed to create fundraiser and got errors"
+  puts ammando_fundraiser.errors.map(&:message).join(', ')
 end
 
 puts "All params for fundraiser are: #{ ammado_fundraiser.params.inspect }"
@@ -86,7 +89,8 @@ ammado_fundraiser_moderator = Ammado::FundraiserModerator.create(
 if ammado_fundraiser_moderator.created?
   puts "Created a moderator, with params: #{ ammado_fundraiser_moderator.params.inspect }"
 else
-  puts "Failed to create fundraiser and got errors #{ ammando_fundraiser.errors.map(&:message).join(', ') }"
+  puts "Failed to create fundraiser and got errors"
+  puts ammando_fundraiser.errors.map(&:message).join(', ')
 end
 ```
 
@@ -107,7 +111,8 @@ ammado_fundraiser_moderator = Ammado::FundraiserModerator.create(
 if ammado_fundraiser_moderator.created?
   puts "Created a moderator, with params: #{ ammado_fundraiser_moderator.params.inspect }"
 else
-  puts "Failed to create fundraiser and got errors #{ ammando_fundraiser.errors.map(&:message).join(', ') }"
+  puts "Failed to create fundraiser and got errors"
+  puts ammando_fundraiser.errors.map(&:message).join(', ')
 end
 ```
 
@@ -126,7 +131,8 @@ ammado_fundraiser_avatar = Ammado::FundraiserAvatar.create(
 if ammado_fundraiser_avatar.created?
   puts "Created a moderator, with params: #{ ammado_fundraiser_avatar.params.inspect }"
 else
-  puts "Failed to create fundraiser and got errors #{ ammado_fundraiser_avatar.errors.map(&:message).join(', ') }"
+  puts "Failed to create fundraiser and got errors"
+  puts ammado_fundraiser_avatar.errors.map(&:message).join(', ')
 end
 ```
 
@@ -145,9 +151,26 @@ ammado_fundraiser_cover = Ammado::FundraiserCover.create(
 if ammado_fundraiser_cover.created?
   puts "Created a moderator, with params: #{ ammado_fundraiser_cover.params.inspect }"
 else
-  puts "Failed to create fundraiser and got errors #{ ammado_fundraiser_cover.errors.map(&:message).join(', ') }"
+  puts "Failed to create fundraiser and got errors: "
+  puts ammado_fundraiser_cover.errors.map(&:message).join(', ')
 end
 ```
+
+
+### https://api.ammado.com/#CategoriesEndpoint
+
+```ruby
+  categories = Ammado::Categories.all
+```
+
+
+
+# https://api.ammado.com/#SearchEndpoint
+
+```ruby
+  found = Ammado::Search.where(search_params)
+```
+
 
 
 Author
