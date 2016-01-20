@@ -5,10 +5,10 @@
 
 Gem::Specification.new do |s|
   s.name = "ammado"
-  s.version = "1.0"
+  s.version = "1.0.1"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
-  s.authors = ["Margus Pxrt"]
+  s.authors = ["Margus Pärt"]
   s.date = "2016-01-20"
   s.description = "Using Ammado API with Ruby (and Rails). https://api.ammado.com/"
   s.email = "margus@wave.ee"
