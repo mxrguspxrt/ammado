@@ -7,6 +7,7 @@ files = [
   'fundraiser_avatar',
   'fundraiser_cover',
   'fundraiser_moderator',
+  'beneficiary',
   'search'
 ]
 
