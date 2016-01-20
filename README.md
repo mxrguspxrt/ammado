@@ -45,9 +45,12 @@ Implemented Endpoints and their usage
 -------------------------------------
 
 
-Note: you acn use parameter names both "beneficiary_id" and "beneficiaryId", but for better readibility and following Ruby standards,
+Note: you acn use parameter names both "model.beneficiary_id" and "model.beneficiaryId", but for better readibility and following Ruby standards,
 I recommend under_scored, not camelCase.
 
+All the existing params can be set with "model.some_param=value" and "model.someParam=value".
+
+To read all the params use "model.params" containing all the resource params.
 
 
 ### https://api.ammado.com/#FundraiserEndpoint
@@ -70,6 +73,24 @@ else
 end
 
 puts "All params for fundraiser are: #{ ammado_fundraiser.params.inspect }"
+```
+
+
+### https://api.ammado.com/#BeneficiaryEndpoint
+
+```ruby
+ammado_beneficiary = Ammado::Beneficiary.find(123)
+
+if ammado_beneficiary
+  puts "Found a beneficiary, with type: "
+  puts ammado_beneficiary.beneficiary_type
+  puts "With raised amount: "
+  puts ammado_beneficiary.raised_amount
+else
+  puts "Beneficiary not found"
+end
+
+puts "All params for ammado_beneficiary are: #{ ammado_beneficiary.params.inspect }"
 ```
 
 
@@ -131,7 +152,7 @@ ammado_fundraiser_avatar = Ammado::FundraiserAvatar.create(
 if ammado_fundraiser_avatar.created?
   puts "Created a moderator, with params: #{ ammado_fundraiser_avatar.params.inspect }"
 else
-  puts "Failed to create fundraiser and got errors"
+  puts "Failed to create ammado_fundraiser_avatar and got errors"
   puts ammado_fundraiser_avatar.errors.map(&:message).join(', ')
 end
 ```
@@ -151,7 +172,7 @@ ammado_fundraiser_cover = Ammado::FundraiserCover.create(
 if ammado_fundraiser_cover.created?
   puts "Created a moderator, with params: #{ ammado_fundraiser_cover.params.inspect }"
 else
-  puts "Failed to create fundraiser and got errors: "
+  puts "Failed to create ammado_fundraiser_cover and got errors: "
   puts ammado_fundraiser_cover.errors.map(&:message).join(', ')
 end
 ```

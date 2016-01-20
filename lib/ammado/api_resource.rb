@@ -8,6 +8,7 @@ module Ammado
       return resource
     end
 
+
     attr_accessor :params
 
     def create
