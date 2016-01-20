@@ -8,17 +8,21 @@ module Ammado
       return resource
     end
 
+    def initialize(params)
+      update_params(params)
+    end
 
-    attr_accessor :params
+    def params
+      @params ||= {}
+    end
 
     def create
       code, response = api.post(resource_create_path, params.merge(signature: calculate_signature, apiKey: api.key))
-      @params.merge!(response)
+      update_params(response)
       return code == '201'
     end
 
-    def initialize(params)
-      @params = {}
+    def update_params(params)
       params.each do |k, v|
         send("#{k}=", v)
       end
