@@ -165,7 +165,7 @@ end
 
 
 
-# https://api.ammado.com/#SearchEndpoint
+### https://api.ammado.com/#SearchEndpoint
 
 ```ruby
   found = Ammado::Search.where(search_params)
