@@ -34,7 +34,7 @@ module Ammado
         assign_meth = meth[0..-2]
         params[assign_meth.underscore] = params[assign_meth.camelize(:lower)] = value
       else
-        return params[meth.underscore] || params[meth.camelize(:lower)]
+        return params[meth]
       end
     end
 
